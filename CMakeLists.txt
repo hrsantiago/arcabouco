@@ -46,3 +46,6 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION lib LIBRARY DESTINATION lib)
 install(DIRECTORY include/autotest DESTINATION include)
+
+#build examples
+add_subdirectory(examples)

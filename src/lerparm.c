@@ -972,7 +972,7 @@ static const char EXIBIR_SIMBOLO_CMD[ ]    = "=exibirdeclaracao" ;
 
       while ( LER_InxBuffer < LER_TamBuffer )
       {
-         if ( __iscsym( LER_Buffer[ LER_InxBuffer ] ))
+         if ((isalnum(LER_Buffer[ LER_InxBuffer ]) || ((LER_Buffer[ LER_InxBuffer ]) == '_')))
          {
             Parm[ inxParm ] = LER_Buffer[ LER_InxBuffer ] ;
 
