@@ -1,23 +1,23 @@
 cmake_minimum_required(VERSION 2.8)
-project(arcabouco)
+project(autotest)
 
-set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/luna/cmake ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake ${CMAKE_MODULE_PATH})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # default build type
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
+    set(CMAKE_BUILD_TYPE Release)
 endif()
 message(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
 
-set(CMAKE_CXX_FLAGS                "${CMAKE_CXX_FLAGS} -std=c++03 -pipe ${WARNS_FLAGS}")
-set(CMAKE_CXX_FLAGS_FULLDEBUG      "-O0 -g")                                # compile with full debug information and no optimizations         (slow speed)
-set(CMAKE_CXX_FLAGS_DEBUG          "-O1 -g -fno-optimize-sibling-calls -DDEBUG")    # compile with minimal optimization and perfect stacktrace support (fair speed)
-set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Wno-error -Os")                        # compile with good optimization and a little stacktrace support   (good speed)
-set(CMAKE_CXX_FLAGS_RELEASE        "-Wno-error -O4 -ffast-math")            # compile with full optimization and without any debug information (good speed)
+set(CMAKE_CXX_FLAGS                "${CMAKE_CXX_FLAGS} -std=c99 -pipe ${WARNS_FLAGS}")
+set(CMAKE_CXX_FLAGS_FULLDEBUG      "-O0 -g")
+set(CMAKE_CXX_FLAGS_DEBUG          "-O1 -g -fno-optimize-sibling-calls -DDEBUG")
+set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Wno-error -Os")
+set(CMAKE_CXX_FLAGS_RELEASE        "-Wno-error -O4 -ffast-math")
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/tables)
-include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/include/autotest)
 
 set(SOURCES
   src/cespdin.c
@@ -30,16 +30,19 @@ set(SOURCES
   src/princip.c
   src/tabsimb.c
 
-  include/cespdin.h
-  include/conta.h
-  include/generico.h
-  include/geraalt.h
-  include/intrpced.h
-  include/intrpcnt.h
-  include/lerparm.h
-  include/tabsimb.h
+  include/autotest/cespdin.h
+  include/autotest/conta.h
+  include/autotest/generico.h
+  include/autotest/geraalt.h
+  include/autotest/intrpced.h
+  include/autotest/intrpcnt.h
+  include/autotest/lerparm.h
+  include/autotest/tabsimb.h
 
   tables/idtiposespaco.def
 )
 
-add_library(arcabouco SHARED ${SOURCES})
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
+
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION lib LIBRARY DESTINATION lib)
+install(DIRECTORY include/autotest DESTINATION include)
