@@ -7,5 +7,5 @@ set(SOURCES
     src/testlis.c
 )
 
-add_executable(example_list ${SOURCES})
-target_link_libraries(example_list ${CMAKE_BINARY_DIR}/lib/libautotest.so)
+add_executable(${PROJECT_NAME} ${SOURCES})
+target_link_libraries(${PROJECT_NAME} ${CMAKE_BINARY_DIR}/lib/libautotest.so)

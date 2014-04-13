@@ -64,7 +64,7 @@
 /***** Declarações exportadas pelo módulo *****/
 
 #ifdef _DEBUG
-   #include    "Generico.h"
+   #include    "generico.h"
 #endif
 
 typedef struct TBS_tagTabela * TBS_tppTabela ;

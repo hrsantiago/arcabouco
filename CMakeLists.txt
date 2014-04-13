@@ -38,6 +38,7 @@ set(SOURCES
   include/autotest/intrpcnt.h
   include/autotest/lerparm.h
   include/autotest/tabsimb.h
+  include/autotest/tst_espc.h
 
   tables/idtiposespaco.def
 )
