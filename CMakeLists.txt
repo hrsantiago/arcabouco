@@ -29,6 +29,7 @@ set(SOURCES
   src/lerparm.c
   src/princip.c
   src/tabsimb.c
+  src/tst_espc.c
 
   include/autotest/cespdin.h
   include/autotest/conta.h
